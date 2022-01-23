@@ -7,7 +7,7 @@ import {
   ServerlessRestfulResponse,
 } from './types';
 
-const serverlessRestful = (event: Event) => async <Data = any, Body = any, Query = any>(
+export const serverlessRestful = (event: Event) => async <Data = any, Body = any, Query = any>(
   actions: ServerlessRestfulActions<Data, Body, Query>,
 ): Promise<NetlifyDataResponse> => {
   const parsedRequestObject: ServerlessRestfulRequest<Body, Query> = {
@@ -62,5 +62,3 @@ const serverlessRestful = (event: Event) => async <Data = any, Body = any, Query
     );
   }
 };
-
-export default serverlessRestful;
