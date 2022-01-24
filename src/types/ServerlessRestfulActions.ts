@@ -1,9 +1,10 @@
 import { ServerlessRestfulRequest, ServerlessRestfulResponse } from '.';
+import Route from './ServerlessRestfulRoute';
 
-export type ServerlessRestfulActions<Body = any, Query = any> = {
-  get?: <Data = any>(req: ServerlessRestfulRequest<Body, Query>) => Promise<ServerlessRestfulResponse<Data>>;
-  post?: <Data = any>(req: ServerlessRestfulRequest<Body, Query>) => Promise<ServerlessRestfulResponse<Data>>;
-  put?: <Data = any>(req: ServerlessRestfulRequest<Body, Query>) => Promise<ServerlessRestfulResponse<Data>>;
-  patch?: <Data = any>(req: ServerlessRestfulRequest<Body, Query>) => Promise<ServerlessRestfulResponse<Data>>;
-  delete?: <Data = any>(req: ServerlessRestfulRequest<Body, Query>) => Promise<ServerlessRestfulResponse<Data>>;
+export type ServerlessRestfulActions<Data = any, Body = any, Query = any> = {
+  get?: Route<Data, Body, Query>;
+  post?: Route<Data, Body, Query>;
+  put?: Route<Data, Body, Query>;
+  patch?: Route<Data, Body, Query>;
+  delete?: Route<Data, Body, Query>;
 };
