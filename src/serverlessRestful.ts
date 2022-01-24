@@ -7,8 +7,8 @@ import {
   ServerlessRestfulResponse,
 } from './types';
 
-export const serverlessRestful = (event: Event) => async <Data = any, Body = any, Query = any>(
-  actions: ServerlessRestfulActions<Data, Body, Query>,
+export const serverlessRestful = (event: Event) => async <Body = any, Query = any>(
+  actions: ServerlessRestfulActions<Body, Query>,
 ): Promise<NetlifyDataResponse> => {
   const parsedRequestObject: ServerlessRestfulRequest<Body, Query> = {
     path: event.path,
@@ -17,7 +17,7 @@ export const serverlessRestful = (event: Event) => async <Data = any, Body = any
   };
 
   try {
-    let ranAction: ServerlessRestfulResponse<Data>;
+    let ranAction: ServerlessRestfulResponse;
 
     switch (event.httpMethod) {
       case 'GET':
